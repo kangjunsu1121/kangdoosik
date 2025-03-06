@@ -1,0 +1,10 @@
+# 가변인자
+
+def profile(name,age,*langs) :
+    print(f'이름 :{name}\t 나이 :{age}\t',end=' ')
+    for i in langs :
+        print(i,end=' ')
+    print()
+
+profile('강두식',26,'python','c','java','c++','ss','싹싹')
+profile('김두강',23,'쿠','콕')
