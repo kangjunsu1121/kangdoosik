@@ -37,3 +37,11 @@ def profile(name,age=17,main_lang='파이썬') :
 
 profile('김두강')
 profile('박태차')
+
+# 키워드 값
+
+def profile(name,age,main_lang) :
+    print(name,age,main_lang)
+
+profile(age=24,name='김두강',main_lang='파이썬')
+profile(main_lang='자바',name='박태차',age=23)
