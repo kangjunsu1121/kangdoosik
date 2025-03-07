@@ -1,0 +1,30 @@
+# 지역변수와 전역변수
+
+gun = 10
+
+def checkpoint(soldiers) :
+    global gun
+    gun = gun - soldiers
+    print(f'[함수 내] 남은 총 {gun}')
+
+def checkpoint_ret(gun,soldiers) :
+    gun = gun - soldiers
+    print(f'[함수 내 남은 총 {gun}]')
+    return gun
+
+print(f'전체 총 : {gun}')
+gun = checkpoint_ret(gun,2)
+print(f'남은 총 : {gun}')
+
+# 함수 퀴즈
+
+def std_weight(height,gender) : # 키 m 단위 (실수), 성별 '남자'/'여자'
+    if gender == '남자' :
+        return height*height*22
+    else :
+        return height*height*21
+
+height = 175 # cm 단위
+gender = '여자'
+weight = std_weight(height/100,gender)
+print(f'키 {height}cm {gender}의 표준 체중은 {weight:.2f}kg 입니다.')     
