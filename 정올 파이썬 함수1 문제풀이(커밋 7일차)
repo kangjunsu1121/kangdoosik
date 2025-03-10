@@ -1,0 +1,36 @@
+# 정올 파이썬 함수1 형성평가1
+def metamong() :
+    print('@'*10)
+
+li = ['first','second','third']
+
+for i in range(3) :
+    print(li[i])
+    metamong()
+
+# 정올 파이썬 함수1 형성평가2
+def all_sum(n) :
+    sum = 0
+    for i in range(1,n+1) :
+        sum += i
+    return sum
+
+n = int(input())
+a = all_sum(n)
+print(a)
+
+# 정올 파이썬 함수1 형성평가3
+def hum(n) :
+    for i in range(1,n+1) :
+        for j in range(1,n+1) :
+            print(j*i,end=' ')
+        print()
+        
+n = int(input())
+hum(n)
+# 정올 파이썬 함수1 형성평가4
+def cal(a,b) :
+    return max(a,b)**2 - min(a,b)**2
+
+a,b = map(int,input().split())
+print(cal(a,b))
