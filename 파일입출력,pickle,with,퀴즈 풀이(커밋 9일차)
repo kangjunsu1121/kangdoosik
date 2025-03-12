@@ -1,0 +1,59 @@
+score_file = open('score_file.txt','r',encoding='utf8')
+print(score_file.read())
+score_file.close()
+
+score_file = open('score.txt','r',encoding='utf8')
+print(score_file.readline(),end='')
+print(score_file.readline(),end='')
+print(score_file.readline(),end='')
+print(score_file.readline(),end='')
+score_file.close()
+
+score_file = open('score.txt','r',encoding='utf8')
+while True :
+    line = score_file.readline()
+    if not line :
+        break
+    print(line,end='')
+score_file.close()
+
+score_file = open('score.txt','r',encoding='utf8')
+lines = score_file.readlines() # 리스트 형태로 저장
+for i in lines:
+    print(i,end='')
+
+score_file.close()
+
+import pickle 
+
+profile_file = open('profile.pickle','wb')
+profile = {'이름':'강두식','나이':26,'취미':['축구','야구','코딩']}
+print(profile)
+pickle.dump(profile,profile_file) # profile 에 있는 정보를 file 에 저장
+profile_file.close()
+
+profile_file = open('profile.pickle','rb')
+profile = pickle.load(profile_file) # file 에 있는 정보를 profile 에 불러오기
+print(profile)
+profile_file.close()
+
+profile_file = open('profile.pickle','wb')
+profile = {'이름':'강두식','나이':26,'취미':['축구','야구','코딩']}
+print(profile)
+pickle.dump(profile,profile_file) # profile 에 있는 정보를 file 에 저장
+profile_file.close()
+
+profile_file = open('profile.pickle','rb')
+profile = pickle.load(profile_file) # file 에 있는 정보를 profile 에 불러오기
+print(profile)
+profile_file.close()
+
+# 퀴즈
+
+for i in range(1,51) :
+    with open(f'{i}주차.txt','w',encoding='utf8') as fff :
+        fff.write(f'''- {i} 주차 주간보고 -
+부서 :
+이름 : 
+업무 요약 :''')
+    
