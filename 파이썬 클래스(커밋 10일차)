@@ -1,0 +1,21 @@
+class Unit :
+    def __init__(self,name,hp,damgae):
+        self.name = name
+        self.hp = hp
+        self.damgae = damgae
+        print(f'{self.name} 유닛이 생성 되었습니다')
+        print(f'체력 {self.hp}, 공격력 {self.damgae}')
+
+marine1 = Unit('마린',40,5)
+marine2 = Unit('마린',40,5)
+tank = Unit('탱크',150,35)     
+
+# 멤버 변수
+wraith1 = Unit('레이스',80,5)
+print(f'유닛 이름 : {wraith1.name}, 공격력 : {wraith1.damgae}')
+
+wraith2 = Unit('빼앗은 레이스',80,5)
+wraith2.cloking = True
+
+if wraith2.cloking == True :
+    print(f'{wraith2.name} 는 현재 클로킹 상태입니다.')
