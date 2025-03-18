@@ -1,0 +1,23 @@
+# 정올 파이썬 클래스 자가진단 1
+class School :
+    def __init__(self,a,b,c):
+        self.name = a
+        self.school_name = b
+        self.school_year = c
+        print(f'''Name : {self.name}
+School : {self.school_name}
+Grade : {self.school_year}''')
+        
+a,b,c = input().split()
+a1 = School(a,b,c)
+
+# 정올 파이썬 클래스 자가진단 2
+class School :
+    def __init__(self,a,b):
+        self.school_name = a
+        self.school_year = b
+        print(f'''6 grade in Jejuelementary School
+{self.school_year} grade in {self.school_name} School''')
+        
+a,b = input().split()
+aa = School(a,b)
