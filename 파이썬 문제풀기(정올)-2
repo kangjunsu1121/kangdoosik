@@ -1,0 +1,12 @@
+# 정올 파이썬 클래스 형성평가 1
+class Come :
+    def __init__(self,a,b,c):
+        self.a = a
+        self.b = b
+        self.c = c
+        print(f'''name : {self.a}
+tel : {self.b}
+addr : {self.c}''')
+        
+a,b,c = input().split()
+aa = Come(a,b,c)
