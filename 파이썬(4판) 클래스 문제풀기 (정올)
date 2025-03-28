@@ -1,0 +1,12 @@
+# 파이썬(4판) 클래스 자가진단 1
+class Home :
+    def __init__(self,location,bedrooms,bathrooms) :
+        self.location = location
+        self.bedrooms = bedrooms
+        self.bathrooms = bathrooms
+        print(f'''location: {self.location}
+bedrooms: {self.bedrooms}
+bathrooms: {self.bathrooms}''')
+        
+location,bedrooms,bathrooms = input().split()
+aa = Home(location,bedrooms,bathrooms)
