@@ -1,0 +1,47 @@
+# 파이썬 클래스 연습문제 6-1 006
+class 사람 :
+    def cry(self,a) :
+        self.a = a
+        print((self.a)*2)
+
+human = 사람()
+human.cry('엉엉')
+human.cry('흑흑')
+
+# 파이썬 클래스 연습문제 6-1 007
+class 사람 :
+    def cry(self,a) :
+        self.a = a
+        for i in self.a :
+            print(i)
+
+human = 사람()
+human.cry('엉엉')
+human.cry('엄마아아아')
+
+# 파이썬 클래스 연습문제 6-1 008
+class 사람 :
+    def call(self,a,b) :
+        self.a = a
+        self.b = b
+        print(f'{self.a}에게 {self.b} 발신중')
+
+human = 사람()
+human.call("김철수", "010-1234-5678")
+
+# 파이썬 클래스 연습문제 6-1 009
+class 사람 :
+    def 구구단(self,a,b) :
+        self.a = a
+        self.b = b
+        print(a*b)
+human = 사람()
+human.구구단(3,7)
+
+# 파이썬 클래스 연습문제 6-1 010
+class 사람 :
+    def 개인정보(self,a) :
+        center = 'X'*(len(a)-2)
+        print(a[0]+center+a[-1])
+human = 사람()
+human.개인정보('유종훈')
