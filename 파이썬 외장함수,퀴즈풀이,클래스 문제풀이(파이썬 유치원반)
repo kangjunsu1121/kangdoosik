@@ -1,0 +1,57 @@
+# 외장 함수
+# time : 시간 관련 함수
+import time
+print(time.localtime())
+print(time.strftime('%Y-%m-%d %H:%M:%S'))
+
+import datetime 
+print('오늘 날짜는',datetime.date.today())
+
+# timedelta : 두 날짜 사이의 간격
+today = datetime.date.today()
+td = datetime.timedelta(days=100)
+print('우리가 만난지 100일은',today + td) # 오늘부터 100일 후
+
+# 퀴즈 풀이
+byme.py
+def sign() :
+    print('''이 프로그램은 강두식에 의해 만들어졌습니다.
+유튜브 : http://youtube.com          
+이메일 : bell3515@naver.com''')
+
+import byme
+byme.sign()
+
+# 파이썬 클래스 연습문제 6-2 011
+class 구구단 :
+    def print(self,a) :
+        for i in range(1,10) :
+            print(f'{a}x{i}={a*i}')
+
+m = 구구단()
+m.print(3)
+
+# 파이썬 클래스 연습문제 6-3 011
+class 사람 :
+    def __init__(self):
+        print('응애응애')
+
+human = 사람()
+
+# 파이썬 클래스 연습문제 6-3 012
+class 사람 :
+    def __init__(self,a):
+        print(f'{a} 님이 태어났습니다.')
+
+human = 사람('유종훈')
+human = 사람('조현호')
+
+# 파이썬 클래스 연습문제 6-3 013
+class 사람 :
+    def __init__(self,a,연도):
+        self.a = a
+        self.연도 = 연도
+        return print(연도)
+
+human = 사람('유종훈',1986)
+human.연도
