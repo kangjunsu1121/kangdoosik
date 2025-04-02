@@ -1,0 +1,54 @@
+# 파이썬 클래스 연습문제 6-3 014
+class 사람 :
+    def __init__(self,a):
+        self.성 = a[0]
+        self.이름 = a[1:]
+        
+human = 사람('유종훈')
+human.성
+human.이름
+
+# 파이썬 클래스 연습문제 6-3 015
+class 사람 :
+    def __init__(self,a,b):
+        self.친구0 = a
+        self.친구1 = b
+
+# 파이썬 클래스 연습문제 6-3 016
+class 사람 :
+    def __init__(self,a,b):
+        self.친구 = [a,b]
+
+# 파이썬 클래스 연습문제 6-3 017
+class 사람 :
+    def __init__(self):
+        self.친구들 = []
+    def 친구추가(self,a) :
+        self.친구들.append(a)
+
+# 파이썬 클래스 연습문제 6-3 018
+class 사람 :
+    def __init__(self,a,b):
+        self.이름 = a
+        self.친구들 = b
+    def 친구추가(self,a) :
+        self.친구들.append(a)
+
+# 파이썬 클래스 연습문제 6-3 019
+class 사람 :
+    def __init__(self,a,b):
+        self.이름 = a
+        self.친구들 = b
+    def 친구목록(self) :
+        print(self.이름,'친구목록')
+        for i in self.친구들 :
+            print('-',i)
+
+# 파이썬 클래스 연습문제 6-3 020
+class 사람 :
+    def __init__(self,a,b):
+        self.이름 = a
+        self.친구들 = b
+    def 친구목록(self,a) :
+        for i in self.친구들[:a] :
+            print(i)
