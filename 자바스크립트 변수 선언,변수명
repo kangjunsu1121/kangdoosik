@@ -1,0 +1,75 @@
+// 변수 선언하기
+
+/**
+ * variables 선언하기
+ * 
+ * 1) var - 더이상 쓰지 않음
+ * 2) let
+ * 3) const - 한번 선언 하고나면 변경이 불가능함
+ */
+var name = '강두식씨';
+console.log(name);
+
+var age = 26;
+console.log(age);
+
+let ive = '아이브';
+console.log(ive);
+
+// let과 var로 선언하면 추후 값을 변경할 수 있다
+ive = '레이';
+console.log(ive);
+
+const newjeans = '뉴진스';
+console.log(newjeans);
+
+// newjeans = '시발';
+
+/**
+ * 선언과 할당 
+ * 
+ * 1) 변수를 선언하는 것.
+ * 2) 할당 
+ */
+var name = '강두식씨';
+console.log(name); 
+
+let girlFriend;
+console.log(girlFriend);
+
+const girlFriend2 ;
+
+// 변수 이름 짓는 법 
+/**
+ * Nameing Conventions
+ * 
+ * 변수 이름 지을때
+ * 1) 일반적으로 영어(라틴문자)를 사용하며 문자와 숫자를 모두 사용 할 수 있다.
+ * 2) 특수기호는 언더스코어와 달러를 사용 할 수 있다.
+ * 3) 숫자로 이름을 시작 할 수 없다.
+ *    1name, 2hello
+ * 4) 키워드는 변수명으로 사용 할 수 없다.
+ *    var var = 'var', let let = 'let'
+ */
+var Kds = '강두식';
+let $ive = '아이브';
+const _lay = '레이';
+
+console.log(Kds);
+console.log($ive);
+console.log(_lay);
+
+// let 1name = 'no';
+// let const = 'no'
+
+/**
+ * Nameing Conventions2
+ * 
+ * 1) camelCase -> 대부분의 언어에서 많이 사용 
+ * 2) snake_case -> 파이썬 같은 언어에서 사용
+ * 3)  PascalCase -> C# 마이크로소프트 계열 언어에서 사용함
+ */
+// 안유진
+const anYuJin = '안유진';
+console.log(anYuJin);
+ 
