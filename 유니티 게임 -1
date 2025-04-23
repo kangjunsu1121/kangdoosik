@@ -1,0 +1,38 @@
+// 배경 움직이기
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Background : MonoBehaviour
+{
+    private float moveSpeed = 3f;
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+        if (transform.position.y < -10) {
+            transform.position += new Vector3(0, 20f, 0);
+        }
+    }
+}
+
+// 키보드 입력
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class player : MonoBehaviour
+{
+    [SerializeField]
+    private float moveSpeed;
+    // Update is called once per frame
+    void Update()
+    {
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        //float verticalInput = Input.GetAxisRaw("Vertical");
+        Vector3 moveTo = new Vector3(horizontalInput, 0f, 0f);
+        transform.position += moveTo * moveSpeed * Time.deltaTime;
+    }   
+}
+
