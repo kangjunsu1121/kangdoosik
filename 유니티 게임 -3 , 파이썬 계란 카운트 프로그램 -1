@@ -1,0 +1,53 @@
+// 적 랜덤 위치에 생성
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemySpawner : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject[] enemies;
+    private float[] arrPosX = {-2.2f, -1.1f, 0f, 1.1f, 2.2f};
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        int index = Random.Range(0, enemies.Length);
+        SpawnEnemy(arrPosX[0], index);
+    }
+
+    // Update is called once per frame
+    void SpawnEnemy(float posX, int index) {
+        Vector3 spawnPos = new Vector3(posX, transform.position.y, transform.position.y);
+        Instantiate(enemies[index], spawnPos, Quaternion.identity);
+    }
+}
+
+# 계란 카운트 
+# 계란 카운트 
+egg = []
+def egg_apeend() :
+    date = int(input('오늘 먹은 계란 개수 입력 : '))
+    egg.append(date)
+    print('계란 추가 완료!')
+
+def egg_count() :
+    print(sum(egg))
+
+def egg_reset() :
+    egg.clear()
+    print('계란 삭제 완료!')
+
+while True :
+    choice = (input('1: 계란 추가, 2: 계란 조회, 3: 계란 리셋, 4: 종료 \n선택하세요: '))
+    if choice == '1' :
+        egg_apeend()
+    elif choice == '2' :
+        egg_count()
+    elif choice == '3' :
+        egg_reset()
+    elif choice == '4' :
+        print('종료를 선택 하셨습니다!')
+        break
+    else :
+        print('잘못 된 입력입니다!')
