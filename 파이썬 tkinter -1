@@ -1,0 +1,85 @@
+from tkinter import *
+from tkinter.messagebox import *
+
+# root = Tk()
+# label = Label(root, text='강두식씨')
+# label.pack()
+
+# root.mainloop()
+
+# 리스트 박스
+root = Tk()
+# listbox = Listbox(root)
+# listbox.pack()
+
+# for i in ['one', 'two', 'three', 'four'] :
+#     listbox.insert(END, i)
+
+# def event_for_listbox(event) :
+#     print('Hello Event')
+
+# listbox.bind('<<ListboxSelect>>',event_for_listbox)
+
+# root.mainloop()
+
+# 엔트리
+# entry = Entry(root)
+# entry.pack()
+
+# entry.insert(0, 'Hello Python')
+
+# root.mainloop()
+# 엔트리에 입력한 내용 삭제는 
+# entry.delete(0, END)
+
+# 텍스트
+# text = Text(root)
+# text.pack()
+
+# date = '''Life is too short
+# You need python'''
+
+# text.insert(1.0, date)
+
+# root.mainloop()
+# 입력한 내용 삭제는 
+# text.delete(1.0, END)
+
+# 버튼
+# b1 = Button(root, text='테스트')
+# b1.pack()
+
+# def btn_click(enent) :
+#     print('버튼이 클릭되었습니다.')
+
+# b1.bind('<Button-1>', btn_click)
+
+# b1.mainloop()
+
+# 컴포넌트 배치
+listbox = Listbox(root)
+label = Label(root, text= '제목')
+entry = Entry(root)
+text = Text(root)
+b1 = Button(root, text= '생성')
+b2 = Button(root, text= '수정')
+b3 = Button(root, text= '삭제')
+
+listbox.grid(row=0, column=0, columnspan=3, sticky='ew')
+label.grid(row=1, column=0)
+entry.grid(row=1, column=1, columnspan=2, sticky='ew')
+text.grid(row=2, column=0, columnspan=3)
+b1.grid(row=3, column=0, sticky='ew')
+b2.grid(row=3, column=1, sticky='ew')
+b3.grid(row=3, column=2, sticky='ew')
+
+root.mainloop()
+
+# 오류 메세지
+# showerror('오류', '오류가 발생했습니다')
+
+# 확인 메세지
+# if askyesno('확인', '정말 삭제하시겠습니다?') :
+#     pass
+# else :
+#     pass
