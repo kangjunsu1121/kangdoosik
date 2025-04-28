@@ -1,0 +1,207 @@
+// 적 위치 바꿔서 5개 생성
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemySpawner : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject[] enemies;
+    private float[] arrPosX = {-2.2f, -1.1f, 0f, 1.1f, 2.2f};
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        foreach (float posX in arrPosX) {
+            int index = Random.Range(0, enemies.Length);
+            SpawnEnemy(posX, index);
+        }
+    }
+
+    // Update is called once per frame
+    void SpawnEnemy(float posX, int index) {
+        Vector3 spawnPos = new Vector3(posX, transform.position.y, transform.position.y);
+        Instantiate(enemies[index], spawnPos, Quaternion.identity);
+    }
+}
+
+// 적을 일정 시간 텀을 두고 계속 생성하기
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemySpawner : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject[] enemies;
+    private float[] arrPosX = {-2.2f, -1.1f, 0f, 1.1f, 2.2f};
+    
+    [SerializeField]
+    private float spawnIntetval = 1.5f;
+    // Start is called before the first frame update
+    void Start()
+    {
+        StartEnemyRoutine();
+    }
+
+    void StartEnemyRoutine() {
+        StartCoroutine("EnemyRoutine");
+    }
+    IEnumerator EnemyRoutine() {
+        yield return new WaitForSeconds(3f); // 3초 기다리고 실행
+        
+        while (true) {
+            foreach (float posX in arrPosX) {
+                int index = Random.Range(0, enemies.Length); // 적을 5명씩 계속 생성하는  무한 반복문
+                SpawnEnemy(posX, index);
+            }
+
+            yield return new WaitForSeconds(spawnIntetval); // 1.5초 기다리고 다시 5명의 적 생성
+        }
+    }
+    // Update is called once per frame
+    void SpawnEnemy(float posX, int index) {
+        Vector3 spawnPos = new Vector3(posX, transform.position.y, transform.position.y);
+        Instantiate(enemies[index], spawnPos, Quaternion.identity);
+    }
+}
+
+// 적 무한생성(단계별로 나눠서 1단계 적 생성후  10번 턴이 지나면 다음 단계 적 생성하기, 같은 레벨에 적 5명 사이에 한단계 높은 적 껴서 생성하기)
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemySpawner : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject[] enemies;
+    private float[] arrPosX = {-2.2f, -1.1f, 0f, 1.1f, 2.2f};
+    
+    [SerializeField]
+    private float spawnIntetval = 1.5f;
+    // Start is called before the first frame update
+    void Start()
+    {
+        StartEnemyRoutine();
+    }
+
+    void StartEnemyRoutine() {
+        StartCoroutine("EnemyRoutine");
+    }
+    IEnumerator EnemyRoutine() {
+        yield return new WaitForSeconds(3f);
+
+        int spawnCount = 0;
+        int enemyIndex = 0;
+        
+        while (true) {
+            foreach (float posX in arrPosX) {
+                SpawnEnemy(posX, enemyIndex);
+            }
+
+            spawnCount += 1;
+            if (spawnCount % 10 == 0) { // spawnCount 값이 10이 되고 나눈 나머지가 0이 되었을 때 한단계 더 쎼진 적을 생성 하기 위해 인데스 값을 1 더해준다
+                enemyIndex += 1;
+            }
+            yield return new WaitForSeconds(spawnIntetval);
+        }
+    }
+    // Update is called once per frame
+    void SpawnEnemy(float posX, int index) {
+        Vector3 spawnPos = new Vector3(posX, transform.position.y, transform.position.y);
+        
+        if (Random.Range(0,5) == 0) { // 같은 레벨인 5개에 쓰레기중에 20% 확률로 0이 나오면 인덱스 값을 1 더해줘서 현재 레벨보다 한단계 위에 쓰레기가 5개에 쓰레기 중에 하나가 되어 같이 생성된다
+            index += 1;
+        }
+
+        if (index >= enemies.Length) {
+            index = enemies.Length -1; // enemy 인덱스가 6을 넘어가면 enemies 총 개수를 더한 값에서 1을 뺀 값으로 다시 변수값을 정해준다
+        }
+        
+        Instantiate(enemies[index], spawnPos, Quaternion.identity);
+    }
+}
+
+// 적 레벨이 올라갈수록 스피드 빨라지게 만들기
+using System.Collections; // Enemy 스크립트트
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Enemy : MonoBehaviour
+{
+    [SerializeField]
+    private float moveSpeed = 10f;
+    private float minY = -7; 
+    // Start is called before the first frame update
+    public void setMoveSpeed(float moveSpeed) {// public을 사용하면 다른 곳에서도 public를 사용한 함수를 사용 가능하다.
+        this.moveSpeed = moveSpeed; // 변수 이름이 똑같은게 있으면 꼭 this를 앞에 사용해 줘야 한다.
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+        if (transform.position.y < minY) {
+            Destroy(gameObject);
+        }
+    }
+}
+
+using System.Collections; // EnemySpawner 스크립트
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemySpawner : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject[] enemies;
+    private float[] arrPosX = {-2.2f, -1.1f, 0f, 1.1f, 2.2f};
+    
+    [SerializeField]
+    private float spawnIntetval = 1.5f;
+    // Start is called before the first frame update
+    void Start()
+    {
+        StartEnemyRoutine();
+    }
+
+    void StartEnemyRoutine() {
+        StartCoroutine("EnemyRoutine");
+    }
+    IEnumerator EnemyRoutine() {
+        yield return new WaitForSeconds(3f);
+
+        float moveSpeed = 5f;
+        int spawnCount = 0;
+        int enemyIndex = 0;
+        
+        while (true) {
+            foreach (float posX in arrPosX) {
+                SpawnEnemy(posX, enemyIndex, moveSpeed);
+            }
+
+            spawnCount += 1;
+            if (spawnCount % 10 == 0) { 
+                enemyIndex += 1;
+                moveSpeed += 2;
+            }
+            yield return new WaitForSeconds(spawnIntetval);
+        }
+    }
+    // Update is called once per frame
+    void SpawnEnemy(float posX, int index, float moveSpeed) {
+        Vector3 spawnPos = new Vector3(posX, transform.position.y, transform.position.y);
+        
+        if (Random.Range(0,5) == 0) { 
+            index += 1;
+        }
+
+        if (index >= enemies.Length) {
+            index = enemies.Length -1; 
+        }
+        
+        GameObject enemyOnject = Instantiate(enemies[index], spawnPos, Quaternion.identity);
+        Enemy enemy = enemyOnject.GetComponent<Enemy>(); //  대충 Enemy 스크립트에 있는 내용들을 쓸 수 있다고 한다.
+        enemy.setMoveSpeed(moveSpeed); // Enemy 스크립트에서 Public으로 만든 setMoveSpeed를 가져와서 EnemySpawner 스크립트 안에서 정의한 moveSpeed를 사용해서 적 레벨이 올라갈수록 스피드가 빨라지게 만들었다.
+    }
+}
