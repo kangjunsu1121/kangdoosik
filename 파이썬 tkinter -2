@@ -1,0 +1,46 @@
+from tkinter import *
+from tkinter.messagebox import *
+
+root = Tk()
+root.title('계란 카운트') # 타이틀 지정하기.
+
+# 창 크기 지정하기
+root.geometry('600x600')
+# 창 크기 변경 불가(값을 False로 해야지 변경이 불가함)
+# root.resizable(width=False, height=False)
+
+label1 = Label(root, text='계란1')
+# 글씨체와 폰트,색깔,글자 크기 변경이 가능함
+# label2 = Label(root, text='계란2', font=('궁서체',15))
+# label3 = Label(root, text='계란3', fg='red')
+
+def eag() :
+    showinfo('계란 카운트','카운트 시작합니다.')
+def error() :
+    showerror('에러','좆되셨슴다.')
+label1.pack()
+# label2.pack()
+# label3.pack()
+b1 = Button(root, text='계란 카운트',command=eag)
+b2 = Button(root, text='실행')
+b3 = Button(root, text='점점점', command=error)
+# side= 로 위치 조정도 가능 ipady는 버튼 내부의 y 방향의 공간 조절
+# ipadx는 버튼 내부의 x 방향 공간 조절 
+
+# pack으로 가능한 것들
+# side= 특정 위치로 정렬 LEFT, RIGHT, TOP, BOTTOM
+# fill= 주어진 공간 전체 채우기 fill=X, fill=Y 형식 사용 
+# anchor= 주어진 공간 내 위치 지정 동서남북 방향 (N,S,W,E) 그리고 CENTER
+# padx / pady 버튼 바깥쪽 주변 공간 확보 padx= x 방향 공간 / pady = y방향 공간 
+# ipadx / ipady 버튼 안쪽 공간 확보 ipadx= x 방향 공간 / ipady = y방향 공간 
+
+# place로 가능한 것들
+# x= x좌표 배치 
+# y= y좌표 배치
+# width= 버튼 너비 
+# height= 버튼 높이 
+
+b2.place(x=300, y=300, width=50, height=50)
+b3.pack(anchor=CENTER)
+b1.pack(side=BOTTOM, fill=X)
+root.mainloop()
