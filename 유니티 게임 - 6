@@ -1,0 +1,123 @@
+코인 만들기 -2
+using System.Collections; coin 스크립트
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Coin : MonoBehaviour
+{
+    // Start is called before the first frame update
+    private float minY = -7f;
+    void Start()
+    {
+        Jump();
+    }
+    void Jump() {
+        Rigidbody2D rigidBody = GetComponent<Rigidbody2D>(); //  유니티에 Rigidbody2D를 가져온다.
+
+        float randomJumpForce = Random.Range(4f, 8f); // 4f~8f값 사이에 값을 랜덤으로 값을 반환해준다.
+        Vector2 jumpVelocity = Vector2.up * randomJumpForce; // 코인이 위에서 랜덤으로 다른 높이로 생성이 된다.
+        jumpVelocity.x = Random.Range(-2f, 2f); // x값 위치를 -2f~2f값 사이에 값을 랜덤으로 반환해준다.
+        rigidBody.AddForce(jumpVelocity, ForceMode2D.Impulse);
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        if (transform.position.y < minY) {
+            Destroy(gameObject); // 코인이 게임 화면을 벗어나면 없어지게 처리하는 부분.
+        }
+    }
+}
+
+using System.Collections; Enemy 스크립트
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Enemy : MonoBehaviour
+{   
+    [SerializeField]
+    private GameObject coin; // 유니티에서 코인 prefabs을 드래그해서 놔두기 위해 만들어준다.
+
+    [SerializeField]
+    private float moveSpeed = 10f;
+    private float minY = -7f; 
+    [SerializeField]
+    private float hp = 1f; // 체력 변수 설정
+    // Start is called before the first frame update
+    public void setMoveSpeed(float moveSpeed) {
+        this.moveSpeed = moveSpeed; 
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+        if (transform.position.y < minY) {
+            Destroy(gameObject); // 적이 게임 화면을 벗어나면 없어지게 처리하는 부분.
+        }
+    }
+    // is trigger가 체크 되어있으면 여기서 충돌 처리 
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "Weapon") { // 태그가 weapon으로 되어있는 오브젝트를 만났을 때 실행 될 수 있게 처리하는 부분.
+            Weapon weapon = other.gameObject.GetComponent<Weapon>(); // Weapon스크립트 내용 가져오기 
+            hp -= weapon.damage;
+            if (hp <= 0) {
+                Destroy(gameObject); // 적 hp가 0이 되거나 그거보다 적을 때 그 적 오브젝트는 사라지게 처리하는 부분.
+                Instantiate(coin, transform.position, Quaternion.identity); // Instantiate 함수는 게임 오브젝트를 동적으로 생성해준다.(생성할 객체 (주로 프리팹), 생성될 위치, 생성 시 회전상태)
+            }
+            Destroy(other.gameObject); // 무기는 적에게 닿으면 항상 사라져야 하니까 항상 사라지게 처리하는 부분.
+        }
+    }
+    // 체크가 안 되어있으면 여기서 충돌 처리 
+    // private void OnCollisionEnter2D(Collision2D other) {}
+}
+
+using System.Collections; Player 스크립트
+using System.Collections.Generic;
+using UnityEngine;
+
+public class player : MonoBehaviour
+{
+    [SerializeField]
+    private float moveSpeed;
+
+    [SerializeField]
+    private GameObject Weapon;
+
+    [SerializeField]
+    private Transform shootTransform;
+
+    [SerializeField]
+    private float shootInterval = 0.05f;
+    private float lastShootTime = 0f;
+    // Update is called once per frame
+    void Update()
+    {
+        // float horizontalInput = Input.GetAxisRaw("Horizontal");
+        // //float verticalInput = Input.GetAxisRaw("Vertical");
+        // Vector3 moveTo = new Vector3(horizontalInput, 0f, 0f);
+        // transform.position += moveTo * moveSpeed * Time.deltaTime;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float tox = Mathf.Clamp(mousePos.x, -2.35f, 2.35f); // 현재값,최소값,최대값 
+        transform.position = new Vector3(tox, transform.position.y, transform.position.z);
+
+        Shoot();
+    }   
+
+    void Shoot() {
+        if (Time.time - lastShootTime > shootInterval) {
+            Instantiate(Weapon, shootTransform.position, Quaternion.identity);
+            lastShootTime = Time.time;
+        }
+
+        
+    }
+    private void OnTriggerEnter2D(Collider2D other) { // 무기와 주인공이 충돌 했을 때 실행 되는 부분.
+        if (other.gameObject.tag == "Enemy") {
+            Debug.Log("Game Over"); // 무기와 주인공이 충돌하면 바로 주인공은 사라지고 Game Over 알림이 뜨게 처리하는 부분.
+            Destroy(gameObject);
+        } else if (other.gameObject.tag == "Coin") { // 코인과 주인공이 충돌 했을 때 실행 되는 부분.
+            Debug.Log("Coin +1");
+            Destroy(other.gameObject); // 코인을 주인공이 먹으면 바로 사라져야해서 코인을 바로 없애주는 부분.
+        }
+    }
+}
