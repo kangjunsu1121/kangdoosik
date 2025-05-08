@@ -1,0 +1,57 @@
+// 게임 종료 화면
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro; // 이걸 사용하겠다고 using으로 정의해줘야 밑에 TextMeshProUGUI가 사용 가능하다.
+using UnityEngine.SceneManagement; // Game Again 버튼을 눌렀을 때 다시 시작하는 메서드를 만들기 위해 이 기능을 사용해야한다.
+
+public class GameManager : MonoBehaviour
+{
+    public static GameManager instance = null;
+
+    [SerializeField]
+    private TextMeshProUGUI text;
+
+    [SerializeField]
+    private GameObject gameOverPanel; // 유니티에서 게임오버패널을 드래그 해서 넣을 수 있게 하기 위해 만들었다.
+    private int coin = 0; // 게임 화면에 코인을 먹으면 개수가 늘어나는 걸 보여줘야 해서 코인 변수를 만들어준다.
+    
+    [HideInInspector] // 이거 사용하면 Inspector에서 밑에 만든 변수를 숨겨줘서 Inspector에서는 확인할 수 없다.
+    public bool isGameOver = false; // 보스를 잡았을 때 무기를 계속 쏘지 않기 위해 공격 하는 걸 멈추는 변수.
+    void Awake() {
+        if (instance == null) { // 싱글턴이라는 디자인 패턴이라고 한다.
+            instance = this;
+        }
+    }
+
+    public void IncreaseCoin() { // 이 함수를 public으로 만들어 줌으로써 player 스크립트에서 코인을 먹었을 때 충돌 처리로 이 함수를 사용한다.
+        coin += 1;
+        text.SetText(coin.ToString()); // 게임 화면에 텍스트를 업데이트 해주기 위해 사용하는 함수(int인 coin을 문자열로 바꿔주기 위해 ToString을 사용해 주었다.)
+    
+        if (coin % 10 == 0) { // 코인을 30개 먹을 때 마다 무기를 업그레이드 시켜주기 위한 부분.
+            player player = FindObjectOfType<player>(); // Unity의 FindObjectOfType 메서드는 특정 타입의 게임 오브젝트를 찾는 데 사용되는 메서드이다. 이 메서드는 지정된 타입의 게임 오브젝트가 하나라도 있는 경우 그 게임 오브젝트를 반환하고, 없는 경우 null을 반환한다.
+                if (player != null) { // 찾았을 때 null 아니고 잘 찾았다면 실행된다.
+                player.Upgrade();
+            }
+        }
+    }
+
+    public void SetGameOver() { // EnemySpawner에서 만든 StopEnemyRoutine를 가져와서 게임을 종료시키는 메서드를 만든다.
+        isGameOver = true; // isGameOver값을 true로 바꿔줌으로써 player에서 공격을 멈추는데 사용한다.
+        
+        EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
+        if (enemySpawner != null) {
+            enemySpawner.StopEnemyRoutine();
+        }
+
+        Invoke("ShowGameOverPanel", 1f); // Invoke는 함수 시작 시간을 설정 한 만큼 지연 시켜 주는 함수이다 저렇게 함수 이름을 넣고 , 다음 지연 시키고 싶은 시간을 float형식으로 적어 주면 된다
+    }                                    // Invoke는 게임종료패널이 바로 뜨는게 아니라 1초 정도 지나고 뜨게 하기 위해 사용했다.
+
+    void ShowGameOverPanel() {
+        gameOverPanel.SetActive(true); // SetActive에다가 true를 넣어서 비활성화 되어있던 게임오버패널을 활성화 시켜준다.
+    }
+
+    public void PlayAgain() {
+        SceneManager.LoadScene("SampleScene"); // SceneManager.LoadScene으로 SampleScene을 불러와서 Game Again버튼을 눌렀을 때 젤 처음 scene으로 돌아간다.
+    }
+}
