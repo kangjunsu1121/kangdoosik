@@ -1,0 +1,114 @@
+// 빙글빙글 원 만들기
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TargetCircle : MonoBehaviour
+{
+    [SerializeField]
+    private float rotateSpeed = -30f; // 시계방향(음수), 반시계방향(양수) 회전 방향 설정
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.Rotate(0, 0, rotateSpeed * Time.deltaTime); // Transform.Rotate는 게임오브젝트를 회전시키기 위한 함수이다. ()안에 있는 순서대로 x,y,z 값이다.
+    }
+}
+
+// 핀 만들기 
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Pin : MonoBehaviour
+{
+    [SerializeField]
+    private float moveSpeed = 10f; // 유니티에서도 변경할 수 있게 SerializeField로 속도 변수를 만들어 준다.
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.position += Vector3.up * moveSpeed * Time.deltaTime; // 위쪽으로 올라가도록 처리하기 위해 Vector3.up을 사용해준다 빠르기는 moveSpeed라는 변수를 만들어서 사용한다.
+    }
+}
+
+// 충돌처리 - 1
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Pin : MonoBehaviour
+{
+    [SerializeField]
+    private float moveSpeed = 10f; // 유니티에서도 변경할 수 있게 SerializeField로 속도 변수를 만들어 준다.
+    
+    private bool isPinned = false; // Pin이 Target에 달라 붙었을 때 그 Pin을 고정 시키기 위해 만들어 주는 변수.
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isPinned == false) { // isPinned값이 false일때만 Pin 계속 올라가는 작업이 실행된다.
+            transform.position += Vector3.up * moveSpeed * Time.deltaTime; // 위쪽으로 올라가도록 처리하기 위해 Vector3.up을 사용해준다 빠르기는 moveSpeed라는 변수를 만들어서 사용한다.
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) { // 충돌 처리를 위한 구문
+        isPinned = true; // 충돌했을 때 isPinned값을 true로 바꿔준다.
+        if (other.gameObject.tag == "Target") { // 충돌한 게임 오브젝트 태그값이 Target일때 실행된다.
+            transform.SetParent(other.gameObject.transform); // Pin이 Target과 충돌했을 때 Pin이 Target에 달라 붙게 하기 위한 작업. 충돌하면 TargetCircle 자식으로 들어오게 된다. (SetParent란? 해당 Object의 부모를 매개변수로 받은 transform으로 설정하는 것.)
+        }
+    }
+}
+
+// 충돌 처리 - 2
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Pin : MonoBehaviour
+{
+    [SerializeField]
+    private float moveSpeed = 10f; // 유니티에서도 변경할 수 있게 SerializeField로 속도 변수를 만들어 준다.
+    
+    private bool isPinned = false; // Pin이 Target에 달라 붙었을 때 그 Pin을 고정 시키기 위해 만들어 주는 변수.
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isPinned == false) { // isPinned값이 false일때만 Pin 계속 올라가는 작업이 실행된다.
+            transform.position += Vector3.up * moveSpeed * Time.deltaTime; // 위쪽으로 올라가도록 처리하기 위해 Vector3.up을 사용해준다 빠르기는 moveSpeed라는 변수를 만들어서 사용한다.
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) { // 충돌 처리를 위한 구문
+        isPinned = true; // 충돌했을 때 isPinned값을 true로 바꿔준다.
+        if (other.gameObject.tag == "Target") { // 충돌한 게임 오브젝트 태그값이 Target일때 실행된다.
+            // GameObject childObject = transform.Find("Square").gameObject; // transform.Find로 Pin에 자식 오브젝트인 Square를 찾아온다.
+            GameObject childObject = transform.GetChild(0).gameObject; // transform.GetChild는 인덱스로 찾아오는 방법이다.
+            SpriteRenderer childSprite = childObject.GetComponent<SpriteRenderer>(); // 유니티에 있는 SpriteRenderer 기능을 GetComponent로 가져온다.
+            childSprite.enabled = true; // 체크가 꺼져있는 걸 다시 체크 하는 기능이다. (enabled : 오브젝트에 추가되어 있는 컴포넌트를 활성화 및 비활성화시킵니다. 특정 기능을 만들 때 지정한 컴포넌트만 비활성화 시켜서 기능을 잠시 정지시키는 용도로 사용 가능합니다.)
+            transform.SetParent(other.gameObject.transform); // Pin이 Target과 충돌했을 때 Pin이 Target에 달라 붙게 하기 위한 작업. 충돌하면 TargetCircle 자식으로 들어오게 된다. (SetParent란? 해당 Object의 부모를 매개변수로 받은 transform으로 설정하는 것.)
+        }
+    }
+}
+
