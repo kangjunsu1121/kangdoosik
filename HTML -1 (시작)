@@ -1,0 +1,12 @@
+<!--기본 문법 -->
+<!DOCTYPE html> <!--DOCTYPE은 현재 문서가 어떠한 버전으로 작성 되어 있는지 표시 하는 것이다.(가장 상단에 표시 한다고 한다)-->
+<html lang="en"> <!--html tag는 시작과 끝을 뜻한다고 한다.(시작)-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    </head> <!--head 태그는 html에 자식 태그이다 웹 문서에 문서 정보를 담당 한다고 한다-->
+    <body> <!--body 태그는 실제 웹 브라우저에 표시되는 태그이다. (똑같이 html 자식 태그이다)-->
+        
+    </body>
+    </html> <!--(끝)-->
