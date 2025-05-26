@@ -1,0 +1,109 @@
+스타일
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS</title>
+    <style>
+      .Green--text {
+        color: green;
+      }
+      .mymy {
+        text-decoration: none;
+      }
+      #what {
+        background-color: black;
+        color: blue;
+      }
+      .yellow {
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="color: blue">제목</h1>
+    <p class="Green--text">안녕하세요 강두식이라는 사나이 입니다.</p>
+    <hr />
+    <a class="mymy" href="http://www.naver.com">네이버</a>
+    <span>이름 :</span><span>강두식</span>
+    <ul>
+      <li>사과</li>
+      <li>딸기</li>
+      <li>포도</li>
+      <li>바나나</li>
+      <hr />
+      <p id="what">
+        <span class="yellow">동해물과</span>
+        <span class="yellow">백두산이</span> 마르고 닳도록<br />
+        하느님이 보우하사 우리나라 만세<br />
+        무궁화 삼천리 화려 강산<br />
+        대한 사람 대한으로 길이 보전하세
+      </p>
+    </ul>
+  </body>
+</html>
+
+Inline Style
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inline Style</title>
+    <!--현업에서는 Inline Style을 잘 사용 하지 않는다고 한다 절대 바뀌지 않는 스타일이거나 꼭 사용 해야 할 때만 사용한다고 한다 -->
+  </head>
+  <body>
+    <h1 style="color: aqua">제목</h1>
+    <div style="width: 100px; height: 100px; border: 1px solid red"></div>
+  </body>
+</html>
+
+Internal Style
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internal Style</title>
+    <style>
+      h1 {
+        color: rgb(59, 206, 42);
+      }
+      .a1 {
+        border: 1px solid red;
+        background-color: aqua;
+        padding: 10px;
+      }
+      * {
+        color: yellow !important;
+      }
+      a {
+        color: red;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>헬스</h1>
+    <p class="a1">오늘은 하체 운동을 하고 왔습니다.</p>
+    <a href="#">네이버</a>
+  </body>
+</html>
+
+External Style
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>External Style</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>코딩</h1>
+    <p class="a1">우리는 코딩을 배우고 있습니다.</p>
+  </body>
+</html>
+
