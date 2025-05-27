@@ -1,0 +1,246 @@
+선택자
+
+Selector Basic
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selector Basic</title>
+    <style>
+      /* 전체 선택자 */
+      /* * {
+        margin: 0;
+        padding: 0;
+      } */
+
+      /* 타입 선택자 */
+      h2 {
+        color: gold;
+      }
+
+      p {
+        color: gray;
+        font-weight: 400;
+        text-align: center;
+      }
+
+      /* class 선택자 */
+      .red-text {
+        color: red;
+      }
+
+      .blue-text {
+        color: blue;
+      }
+
+      /* ID 선택자 */
+      #title {
+        color: antiquewhite;
+        font-size: 40px;
+        background-color: brown;
+      }
+
+      /*그룹 선택자*/
+      h1,
+      h2 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title">Drowning</h1>
+
+    <h2>1절</h2>
+    <p>
+      미치도록 사랑했던<br />
+      지겹도록 다투었던<br />
+      너가 먼저 떠나고<br />
+      여긴 온종일 비가 왔어<br />
+      금세 턱 끝까지 차올랐고<br />
+      숨이 막혀와<br />
+      Oh 내 맘이란 추는 나를 더 깊게, 더 깊게 붙잡아
+    </p>
+    <p>
+      Oh, I'm drowning<br />
+      It's raining all day<br />
+      Yeah, I can't (yeah) breathe<br />
+      Oh, oh, I'm drowning<br />
+      Oh, I'm drowning<br />
+      Oh, I'm drowning<br />
+      Oh, I'm drowning<br />
+      You're taking my life from me
+    </p>
+
+    <h2>2절</h2>
+    <p>
+      다 알면서 눈 감은 넌 왜<br />
+      다정한 말로 나를 죽여놓고<br />
+      날 누이고 너는 떠나갔지<br />
+      You cut me bad, I'm still waiting for you<br />
+      너 떠나고 이곳은 잠겨 눈물로<br />
+      날 너무 사랑했던 넌<br />
+      어디로 흩어졌는지 (oh)<br />
+      Oh 내 맘이란 추는 나를 더 깊게, 더 깊게 붙잡아
+    </p>
+    <p>
+      Oh, I'm drowning<br />
+      It's raining all day<br />
+      Yeah, I can't (yeah) breathe<br />
+      Oh, oh, I'm drowning<br />
+      Oh, I'm drowning<br />
+      Oh, I'm drowning<br />
+      Oh, I'm drowning<br />
+      You're taking my life from me
+    </p>
+
+    <h2>레전드 부분</h2>
+    <p>
+      <span class="red-text">더 깊이 빠져</span>
+      <span class="red-text">죽어도 되니까</span><br />
+      다시 한번만 돌아와 줄래?<br />
+      더 깊이 빠져 죽어도 되니까<br />
+      <span class="blue-text">다시 한번만</span> (다시 한번만)
+    </p>
+    <p>
+      Oh, I'm drowning<br />
+      It's raining all day<br />
+      Yeah, I can't (yeah) breathe<br />
+      Oh, oh, I'm drowning<br />
+      Oh, I'm drowning<br />
+      Oh, I'm drowning<br />
+      Oh, I'm drowning<br />
+      You're taking my life from me
+    </p>
+  </body>
+</html>
+
+Selectot Attibute
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selectot Attibute</title>
+    <style>
+      /* 속성이 존재하는 요소*/
+      h2[class] {
+        font-size: 30px;
+      }
+      [target] {
+        color: green;
+      }
+
+      /*속성 값과 일치하는 요소*/
+      h2[class='naver-title'] {
+        color: green;
+      }
+
+      /*속성 값을 포함하는 요소 */
+      a[href*='www'] {
+        text-decoration: none;
+      }
+
+      /*속성 값으로 시작하는 요소*/
+      h2[class^='google'] {
+        color: blue;
+      }
+
+      /*속성 값으로 끝나는 요소*/
+      a[href$='facebook.com'] {
+        color: red;
+      }
+
+      /*속성에 단어가 포함하는 요소*/
+      h2[class~='title'] {
+        color: blue;
+        font-weight: 300;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 class="naver-title">네이버</h2>
+    <a href="http://www.naver.com">네이버</a>
+    <h2 class="google-title">구글</h2>
+    <a href="http://www.google.com" target="_blank">구글</a>
+    <h2 class="facebook-title">페이스북</h2>
+    <a href="http://www.facebook.com">페이스북</a>
+    <h2>강두식</h2>
+    <h2 class="text title kang">감사합니다.</h2>
+  </body>
+</html>
+
+Selectot Combination
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selectot Combination</title>
+    <style>
+      /*자손 결합자*/
+      /* section li {
+        color: blue;
+      }
+
+      section span {
+        color: red;
+      } */
+
+      /*자식 결합자*/
+      section > ul > li {
+        color: blueviolet;
+      }
+
+      /*일반 형제 결합자*/
+      p ~ span {
+        color: red;
+      }
+
+      /* 인접 형제 결합자 */
+      p + code {
+        font-size: 30px;
+      }
+
+      .frist + li {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h1>헬스</h1>
+      <hr />
+      <p>헬스(health)는 가본적으로 건강을 가리키며</p>
+      <p>
+        대한민국에서는 근력 트레이닝이나 웨이트 트레이닝을 의미하기도 한다. 그
+        외에 다음을 가르킨다
+      </p>
+      <ul>
+        <li>의료</li>
+        <li>보건</li>
+        <li>체력(게이밍)</li>
+        <li>패션 헬스(Fashion health)</li>
+        <li>헬스 클럽(health club)</li>
+        <li><span>구글</span> 헬스: 구글이 제공하는 개안 의료 정보 서비스</li>
+      </ul>
+    </section>
+
+    <hr />
+
+    <section>
+      <span>이건 빨강이 아닙니다</span>
+      <p>여기 문단이 있습니다</p>
+      <code>여긴 코드가 있는 곳이에요.</code>
+      <span>이제 빨강입니다.</span>
+      <code>또 코드가 있어요.</code>
+      <span>또 빨강입니다</span>
+    </section>
+    <hr />
+    <ul>
+      <li class="frist">one</li>
+      <li>two</li>
+      <li>three</li>
+    </ul>
+  </body>
+</html>
