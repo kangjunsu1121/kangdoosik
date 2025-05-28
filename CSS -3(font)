@@ -1,0 +1,187 @@
+폰트 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Font Style 1</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+      /* * {
+        margin: 0px;
+        padding: 0px;
+      } */
+
+      html {
+        /* font-family: serif, monospace;  */
+        /* font-family: 'Nanum Pen Script', cursive; */
+        font-size: 16px;
+      }
+
+      .title {
+        font-size: 28px;
+        color: #19197d;
+      }
+      .content {
+        font-size: 18px;
+      }
+
+      .font-italic {
+        font-style: italic;
+      }
+
+      .font-weight-bold {
+        font-weight: bold;
+      }
+
+      .font-weight-300 {
+        font-weight: 300;
+      }
+
+      .font-variant {
+        font-variant: small-caps;
+      }
+
+      .subtitle {
+        font-size: 20px;
+      }
+
+      .subtitle-rem {
+        font-size: 2rem;
+      }
+
+      .subtitle-em {
+        font-size: 2em;
+      }
+
+      .air {
+        font-size: 10px;
+      }
+
+      .rectangle.width {
+        width: 20vw;
+        height: 100px;
+        background-color: yellow;
+      }
+
+      .rectangle.height {
+        height: 20vh;
+        width: 100px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 class="title">제목</h2>
+    <p class="content">안녕하십니까 저는 오늘 운동을 가지 않았습니다.</p>
+    <p class="content font-italic">
+      안녕하십니까 저는 오늘 운동을 가지 않았습니다.
+    </p>
+    <p class="content font-weight-bold">
+      안녕하십니까 저는 오늘 운동을 가지 않았습니다.
+    </p>
+    <p class="content font-weight-300">
+      안녕하십니까 저는 오늘 운동을 가지 않았습니다.
+    </p>
+    <p class="content font-variant">HELLO, kangdoosik</p>
+    <hr />
+    <h2>px</h2>
+    <p class="subtitle">안녕하십니까 저는 오늘 운동을 가지 않았습니다.</p>
+    <h2>rem</h2>
+    <p class="subtitle-rem">안녕하십니까 저는 오늘 운동을 가지 않았습니다.</p>
+    <h2>em</h2>
+    <div class="air">
+      <p class="subtitle-em">안녕하십니까 저는 오늘 운동을 가지 않았습니다.</p>
+    </div>
+    <hr />
+    <!-- viewport width -->
+    <h2>vw</h2>
+    <div class="rectangle width"></div>
+    <!-- viewport height -->
+    <h2>vh</h2>
+    <div class="rectangle height"></div>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Font Style 2</title>
+    <style>
+      html {
+        font-size: 16px;
+      }
+      .content {
+        border: 1px solid blue;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .text-right {
+        text-align: right;
+      }
+
+      .text-left {
+        text-align: left;
+      }
+
+      .article {
+        line-height: 1.8rem;
+        letter-spacing: 1px;
+        word-spacing: 10px;
+        text-indent: 80px;
+      }
+
+      .transform-case {
+        text-transform: lowercase;
+      }
+
+      .article > a {
+        text-decoration: none;
+      }
+
+      .text-shadow {
+        text-shadow: 5px 5px 3px black;
+      }
+
+      ul {
+        list-style: square;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <p class="content text-center">KANGDOOSIK</p>
+      <p class="content text-right">KANGDOOSIK</p>
+      <p class="content text-left">KANGDOOSIK</p>
+    </section>
+    <section>
+      <p class="article">
+        체중 감량을 일컫는다. 본래 영어<span class="transform-case"
+          >(Fuck)</span
+        >
+        단어 다이어트(Diet)는 <a href="#">식단</a>, 식습관이나 식단을 조절하는
+        것을 의미한다. 이는 건강을 유지하거나 개선하기 위해 특정한 음식을 먹거나
+        피하는 행위를 포함한다. 다이어트는 단순히 체중 감량을 목표로 하는 것이
+        아니라 건강을 유지하거나 특정 질병을 관리하기 위한 목적으로도 시행된다.
+        예를 들어 당뇨병 환자는 혈당 조절을 위해 특정한 다이어트를 해야 할 수
+        있다.
+      </p>
+    </section>
+    <section>
+      <h2 class="text-shadow">강두식</h2>
+    </section>
+    <section>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </section>
+  </body>
+</html>
