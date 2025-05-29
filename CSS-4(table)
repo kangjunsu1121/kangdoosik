@@ -1,0 +1,86 @@
+table
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table</title>
+    <style>
+      #movies {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      #movies td,
+      #movies th {
+        border: 1px solid rgb(154, 154, 154);
+        padding: 8px;
+      }
+
+      #movies th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: green;
+        color: white;
+      }
+      #movies tr:nth-child(even) {
+        background-color: gray;
+      }
+
+      #movies tr:hover {
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="movies">
+      <tr>
+        <th>영화</th>
+        <th>상영시간</th>
+        <th>개봉</th>
+      </tr>
+      <tr>
+        <td>릴로 & 스티치</td>
+        <td>108분</td>
+        <td>2025.05.21 개봉</td>
+      </tr>
+      <tr>
+        <td>미션 임파서블:파이널 레코닝</td>
+        <td>169분</td>
+        <td>2025.05.17 개봉</td>
+      </tr>
+      <tr>
+        <td>야당</td>
+        <td>123분</td>
+        <td>2025.04.16 개봉</td>
+      </tr>
+      <tr>
+        <td>씨너스:죄인들</td>
+        <td>137분</td>
+        <td>2025.05.28 개봉</td>
+      </tr>
+      <tr>
+        <td>페니키안 스킴</td>
+        <td>101분</td>
+        <td>2025.05.28 개봉</td>
+      </tr>
+      <tr>
+        <td>알사탕</td>
+        <td>21분</td>
+        <td>2025.05.28 개봉</td>
+      </tr>
+      <tr>
+        <td>파과</td>
+        <td>122분</td>
+        <td>2025.04.30 개봉</td>
+      </tr>
+      <tr>
+        <td>미야자키 하야오:자연의 영혼</td>
+        <td>86분</td>
+        <td>2025.05.28 개봉</td>
+      </tr>
+    </table>
+  </body>
+</html>
