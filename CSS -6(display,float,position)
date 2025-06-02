@@ -1,0 +1,252 @@
+display
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display</title>
+    <style>
+      div,
+      h2 {
+        border: 1px solid gray;
+        /* display: none; */
+      }
+
+      a,
+      span {
+        border: 1px solid blue;
+      }
+
+      article > div,
+      article > span {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Display block</h1>
+    <div>content</div>
+    <div>content</div>
+    <div>content</div>
+    <h2>title</h2>
+
+    <h1>Display inline</h1>
+    <span>content</span>
+    <span>content</span>
+    <span>content</span>
+    <a href="">네이버</a>
+
+    <article>
+      <h1>Display inilne block</h1>
+      <div>content</div>
+      <div>content</div>
+      <div>content</div>
+      <span>content</span>
+      <span>content</span>
+      <span>content</span>
+    </article>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+        list-style: none; /*현업에서 많이 사용 한다고 함 기호를 없애 주는 기능을 함.*/
+      }
+      nav {
+        background-color: #34495e;
+        width: 100%;
+        height: 80px;
+      }
+
+      nav li {
+        display: inline-block;
+        margin: 0 8px;
+        line-height: 80px;
+      }
+
+      nav a {
+        color: white;
+        font-size: 20px;
+        text-transform: uppercase;
+        padding: 10px;
+      }
+
+      a.active,
+      a:hover {
+        border: 1px solid white;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Feedback</a></li>
+      </ul>
+    </nav>
+  </body>
+</html>
+
+float 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Float</title>
+    <style>
+      .container {
+        width: 600px;
+        border: 1px solid gray;
+      }
+
+      img {
+        width: 300px;
+      }
+
+      .float-left {
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 3px;
+      }
+
+      .float-right {
+        float: right;
+      }
+
+      p {
+        border: 1px solid black;
+      }
+
+      .clear {
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img class="float-left" src="../assets/imgd/ocean-1.jpg" alt="" />
+      <p>
+        바다(sea, ocean)는 지구 지각층의 저지대를 채우고 있는 거대한 물
+        덩어리로, 바다에 대하여 해수면보다 더 높은 지대를 이루어 드러난 지표면은
+        육지라고 부른다.
+      </p>
+      <p class="clear">
+        바다(sea, ocean)는 지구 지각층의 저지대를 채우고 있는 거대한 물
+        덩어리로, 바다에 대하여 해수면보다 더 높은 지대를 이루어 드러난 지표면은
+        육지라고 부른다.
+      </p>
+      <!-- <img class="float-right" src="../assets/imgd/ocean-2.jpg" alt="" />
+      <p>
+        바다는 물로 이뤄져 있고, 물의 독특한 물리화학적 성질은 지구상에 생물이
+        탄생할 수 있는 기반을 마련했다. 오늘날에도 무수한 생물이 바다 속에 살며,
+        해양에는 30만여 종에 달하는 생물군이 분포하고 이들의 재생산력은 육지
+        생물보다 5-7배나 뛰어난 것으로 알려져 있다. 특히 상어는 대다수의 종들이
+        바다에서 산다.[2] 또한 수많은 세대를 거쳤음에도 육상의 동물들은 아직도
+        바다 속에서 살던 흔적을 지니고 있다. 인간 역시 옛날부터 오늘날에
+        이르기까지 바다와 밀접한 관계를 맺어 왔으며, 문화권의 온갖 특성에 깊숙이
+        관여되어 있다. 바다의 주 구성 물질은 물이지만, 많은 염이 녹아 있다. 특히
+        '염'이라는 단어에서 짐작하듯, 바닷물에는 대단히 많은 소금과 염소 이온이
+        녹아 있다. 따라서 바닷물은 곧 짠물 혹은 소금물인 셈이다. 그런 데다가
+        물이라 열용량이 엄청나고 어는점도 낮아서 잘 얼지도 않는다.[3] 그래서
+        강처럼 물이 많은 곳도 잘 어는데 바다는 언 흔적조차도 없는 진귀한 광경을
+        볼 수 있다. 이런 현상은 바닷가에 있는 모래밭도 마찬가지다. 물론 예외는
+        있다.
+      </p> -->
+    </div>
+  </body>
+</html>
+
+position
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Position</title>
+    <style>
+      main,
+      article,
+      section,
+      div {
+        border: 1px solid black;
+        padding: 20px;
+      }
+
+      main {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: yellow;
+      }
+
+      article {
+        background-color: blueviolet;
+      }
+
+      section {
+        background-color: aqua;
+      }
+
+      div {
+        background-color: white;
+      }
+
+      div.relative {
+        position: relative;
+        right: 20px;
+      }
+
+      div.absolute {
+        position: absolute;
+        background-color: gray;
+      }
+
+      div.fixed {
+        position: fixed;
+        background-color: blue;
+        bottom: 30px;
+        right: 30px;
+        border-radius: 50%;
+      }
+
+      div.sticky {
+        position: sticky;
+        top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      main
+      <article>
+        article
+        <section>
+          section
+          <div>static</div>
+          <div class="relative">relative</div>
+          <div class="absolute">absolute</div>
+          <div class="fixed">fixed</div>
+          <div class="sticky">sticky</div>
+          <div style="height: 1000px"></div>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>
