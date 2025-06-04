@@ -1,0 +1,137 @@
+html
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="my-wap.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <p>Cover</p>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </header>
+      <section>
+        <p>정중앙</p>
+        <p>이 내용물은 정확히 가운데 위치한다</p>
+        <a href="#">버튼</a>
+      </section>
+      <footer>
+        이걸 <a href="https://www.naver.com/">누르면</a> 이동
+        <a href="https://www.youtube.com/">가능한</a> 링크들
+      </footer>
+    </div>
+  </body>
+</html>
+
+css
+
+* {
+  margin: 0;
+  padding: 0;
+  /* border: 1px solid black; */
+}
+
+body {
+  background-color: #333;
+  color: white;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  height: 100vh;
+  display: flex; /*flexbox는 뷰 포트나 요소의 크기가 불명확하거나 동적으로 변할 때에도 효율적으로 요소를 배치, 정렬, 분산 시킬 수가 있습니다.(기본적으로는 row 속성으로 지정이 되어 있습니다.)*/
+  flex-direction: column; /*flex-direction: column속성을 적용해 header, nav 등 flex item을 수직으로 정렬합니다.*/
+  justify-content: space-between; /*justify-content는 콘텐츠 항목 사이와 주위에 공간을 분배하는 방법을 정의한다. 아이템들의 "사이(between)"에 균일한 간격을 만들어준다.*/
+  align-items: center; /*align-items 교차 축에서 Items들의 정렬 방법을 설정합니다.Item들이 한 줄일 경우 많이 사용합니다.*/
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding: 1.2rm 0;
+}
+
+header > p {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+header > ul {
+  display: flex;
+}
+
+header > ul > li {
+  list-style-type: none;
+  margin-left: 1.5rem;
+}
+
+header > ul > li > a {
+  text-decoration: none; /*글자를 장식하는데, 즉 꾸미는데 사용합니다. <a>태그에 밑줄을 없앨 때 많이 사용합니다.*/
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding-bottom: 5px;
+  color: white;
+}
+
+header > ul > li:first-child > a {
+  border-bottom: 5px solid white;
+}
+
+header > ul > li > a:hover {
+  border-bottom: 5px solid gray;
+}
+
+section {
+  padding: 0.3rem;
+  text-align: center;
+}
+
+section > p {
+  margin-bottom: 2rem;
+}
+
+section > p:first-child {
+  font-size: 2rem;
+  font-weight: 900; /*글씨에 굵기를 정해준다*/
+}
+
+section > p:last-of-type {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+section > a {
+  display: block;
+  border: 1px solid black;
+  width: 150px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: auto;
+  padding: 1rem;
+  border-radius: 10px; /*테두리에 꼭짓점을 둥글게 만들어줌*/
+  text-decoration: none;
+  background-color: white;
+  color: black;
+}
+
+footer {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+footer > a {
+  text-decoration: none;
+  color: white;
+}
